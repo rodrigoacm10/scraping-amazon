@@ -1,0 +1,265 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.main {
+  /* background-color: aqua; */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  background-color: #131921;
+  padding-top: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: bold;
+  color: white;
+}
+
+#searchForm {
+  /* display: flex; */
+  padding-top: 38px;
+  padding-bottom: 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.subtitle {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.input-container {
+  display: flex;
+  border: 1px solid #131921;
+  border-radius: 10px;
+}
+
+.input-product {
+  padding-left: 14px;
+  padding-right: 14px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  /* border-radius: 10px; */
+  border-color: #c9c9c9;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.input-product-btn {
+  height: 100%;
+  display: block;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 10px;
+  font-size: 16px;
+  align-items: center;
+  justify-content: center;
+  border: none; /* remove todas as bordas */
+  background-color: #febd69;
+
+  /* adiciona borda apenas no lado esquerdo */
+  border-left: 1px solid #131921;
+}
+
+#results {
+  width: 100%;
+  flex: 1;
+  padding: 20px;
+  padding-bottom: 60px;
+  background: radial-gradient(
+    circle,
+    #d4d4d4 0%,
+    #d4d4d4 40%,
+    transparent 100%
+  );
+  /* background-color: #e2e2e2; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.no-search {
+  font-weight: 600;
+}
+
+.result-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 2px;
+  /* background-color: yellow; */
+  gap: 12px;
+}
+
+.item-container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  align-items: center;
+  width: 270px;
+  padding: 16px;
+  border-radius: 10px;
+}
+
+.item-img {
+  width: 240px;
+  height: 240px;
+  object-fit: contain;
+}
+
+.item-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 16px;
+}
+
+.item-title {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.item-reviews-container {
+  display: flex;
+  gap: 10px;
+  padding-top: 6px;
+  align-items: center;
+}
+
+.item-stars {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.item-rating {
+  font-size: 18px;
+  font-weight: 400;
+  /* background-color: ; */
+}
+
+.item-reviews {
+}
+
+.items-reviews-span {
+  padding-right: 2px;
+  padding-left: 2px;
+  color: #2162a1;
+}
+
+/* :root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.vanilla:hover {
+  filter: drop-shadow(0 0 2em #f7df1eaa);
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+} */
