@@ -7,12 +7,11 @@ export const scrapeKeywordService = async ({
 }: {
   keyword: string
 }): Promise<ItemType[]> => {
-  const API_KEY = process.env.SCRAPER_API_KEY // coloque sua key no .env
+  const API_KEY = process.env.SCRAPER_API_KEY
   const targetUrl = `https://www.amazon.com.br/s?k=${encodeURIComponent(
     keyword,
   )}`
 
-  // URL do ScraperAPI com render=true para executar JS se necessário
   const scraperUrl = `http://api.scraperapi.com/?api_key=${API_KEY}&url=${encodeURIComponent(
     targetUrl,
   )}&render=true`
