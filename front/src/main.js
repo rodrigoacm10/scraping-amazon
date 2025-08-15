@@ -6,7 +6,7 @@ import './style.css'
 document.querySelector('#app').innerHTML = `
   <div class="main" >
     <div class="container">
-      <h1 class="title" >Amazon Scrapper</h1>
+      <h1 class="title" >Amazon Scraper</h1>
       <form id="searchForm">
         <div class="input-container" >
           <input class="input-product" type="text" id="keywordInput" placeholder="search product" required />
