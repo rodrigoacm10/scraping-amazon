@@ -39,7 +39,7 @@ git clone https://github.com/your-username/scraping-amazon.git
 Create a `.env` file inside `/back` with:
 
 ```env
-SCRAPER_API_KEY=ca92f1724bc463eb86b5ffb291839f77
+SCRAPER_API_KEY=your_key
 FRONTEND_ORIGIN=http://localhost:5173
 ```
 
