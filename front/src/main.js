@@ -29,7 +29,7 @@ function renderList(data) {
   }
 
   if (!data.length) {
-    resultsDiv.innerHTML = '<p>Nenhum resultado encontrado.</p>'
+    resultsDiv.innerHTML = '<p class="no-result">nothing found</p>'
     return
   }
 
@@ -46,9 +46,11 @@ function renderList(data) {
                   <div class="item-reviews-container">
                     <div class="item-stars">
                       ${startIcon}
-                      <p class="item-rating">4.7</p>
+                      <p class="item-rating">${item.rating.split(' de ')[0]}</p>
                     </div>
-                    <p class="item-reviews">(<span class="items-reviews-span">${item.reviews}</span>)</p>
+                    <p class="item-reviews">(<span class="items-reviews-span">${
+                      item.reviews
+                    }</span>)</p>
                   </div>
                 </div>
             </div>`,
@@ -61,136 +63,28 @@ function renderList(data) {
 document.getElementById('searchForm').addEventListener('submit', async (e) => {
   e.preventDefault()
 
-  const keyword = document.getElementById('keywordInput').value
+  const keyword = document.getElementById('keywordInput').value.trim()
+  if (!keyword) return
+
+  const resultsDiv = document.getElementById('results')
+
+  // Exibe loading
+  resultsDiv.innerHTML = '<div class="spinner"></div>'
 
   try {
-    // const res = await fetch(`https://sua-api.com/search?keyword=${encodeURIComponent(keyword)}`)
-    // const data = await res.json()
-    const data = [
-      {
-        title: 'title 1',
-        reviews: 2,
-        image: 'https://m.media-amazon.com/images/I/51uReCdcgTL._AC_UL320_.jpg',
-      },
-      {
-        title: 'title 2',
-        reviews: 3,
-        image: 'https://m.media-amazon.com/images/I/81vDa3d63CL._AC_UL320_.jpg',
-      },
-      {
-        title: 'title 3',
-        reviews: 5,
-        image: 'https://m.media-amazon.com/images/I/51uReCdcgTL._AC_UL320_.jpg',
-      },
-      {
-        title: 'title 1',
-        reviews: 2,
-        image: 'https://m.media-amazon.com/images/I/51uReCdcgTL._AC_UL320_.jpg',
-      },
-      {
-        title: 'title 2',
-        reviews: 3,
-        image: 'https://m.media-amazon.com/images/I/81vDa3d63CL._AC_UL320_.jpg',
-      },
-      {
-        title: 'title 3',
-        reviews: 5,
-        image: 'https://m.media-amazon.com/images/I/51uReCdcgTL._AC_UL320_.jpg',
-      },
-      {
-        title: 'title 1',
-        reviews: 2,
-        image: 'https://m.media-amazon.com/images/I/51uReCdcgTL._AC_UL320_.jpg',
-      },
-      {
-        title: 'title 2',
-        reviews: 3,
-        image: 'https://m.media-amazon.com/images/I/81vDa3d63CL._AC_UL320_.jpg',
-      },
-      {
-        title: 'title 3',
-        reviews: 5,
-        image: 'https://m.media-amazon.com/images/I/51uReCdcgTL._AC_UL320_.jpg',
-      },
-      {
-        title: 'title 1',
-        reviews: 2,
-        image: 'https://m.media-amazon.com/images/I/51uReCdcgTL._AC_UL320_.jpg',
-      },
-      {
-        title: 'title 2',
-        reviews: 3,
-        image: 'https://m.media-amazon.com/images/I/81vDa3d63CL._AC_UL320_.jpg',
-      },
-      {
-        title: 'title 3',
-        reviews: 5,
-        image: 'https://m.media-amazon.com/images/I/51uReCdcgTL._AC_UL320_.jpg',
-      },
-      {
-        title: 'title 1',
-        reviews: 2,
-        image: 'https://m.media-amazon.com/images/I/51uReCdcgTL._AC_UL320_.jpg',
-      },
-      {
-        title: 'title 2',
-        reviews: 3,
-        image: 'https://m.media-amazon.com/images/I/81vDa3d63CL._AC_UL320_.jpg',
-      },
-      {
-        title: 'title 3',
-        reviews: 5,
-        image: 'https://m.media-amazon.com/images/I/51uReCdcgTL._AC_UL320_.jpg',
-      },
-      {
-        title: 'title 1',
-        reviews: 2,
-        image: 'https://m.media-amazon.com/images/I/51uReCdcgTL._AC_UL320_.jpg',
-      },
-      {
-        title: 'title 2',
-        reviews: 3,
-        image: 'https://m.media-amazon.com/images/I/81vDa3d63CL._AC_UL320_.jpg',
-      },
-      {
-        title: 'title 3',
-        reviews: 5,
-        image: 'https://m.media-amazon.com/images/I/51uReCdcgTL._AC_UL320_.jpg',
-      },
-      {
-        title: 'title 1',
-        reviews: 2,
-        image: 'https://m.media-amazon.com/images/I/51uReCdcgTL._AC_UL320_.jpg',
-      },
-      {
-        title: 'title 2',
-        reviews: 3,
-        image: 'https://m.media-amazon.com/images/I/81vDa3d63CL._AC_UL320_.jpg',
-      },
-      {
-        title: 'title 3',
-        reviews: 5,
-        image: 'https://m.media-amazon.com/images/I/51uReCdcgTL._AC_UL320_.jpg',
-      },
-      {
-        title: 'title 1',
-        reviews: 2,
-        image: 'https://m.media-amazon.com/images/I/51uReCdcgTL._AC_UL320_.jpg',
-      },
-      {
-        title: 'title 2',
-        reviews: 3,
-        image: 'https://m.media-amazon.com/images/I/81vDa3d63CL._AC_UL320_.jpg',
-      },
-      {
-        title: 'title 3',
-        reviews: 5,
-        image: 'https://m.media-amazon.com/images/I/51uReCdcgTL._AC_UL320_.jpg',
-      },
-    ]
+    const res = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/scrape?keyword=${encodeURIComponent(
+        keyword,
+      )}`,
+    )
+    const data = await res.json()
+
+    console.log('RES', res)
+    console.log('DATA ->', data)
+
     renderList(data)
   } catch (error) {
     console.error(error)
-    document.getElementById('results').innerHTML = '<p>Erro na busca.</p>'
+    resultsDiv.innerHTML = '<p class="error">Error in search</p>'
   }
 })
